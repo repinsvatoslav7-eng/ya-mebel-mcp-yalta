@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ya-mebel-mcp-yalta
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /mcp
+    envVars:
+      - key: YALTA_SITE_ID
+        value: yalta-main
+      - key: YALTA_SITE_URL
+        value: https://yamebel.pro
+      - key: YALTA_SHARED_SECRET
+        sync: false
+      - key: YMB_REQUEST_TIMEOUT
+        value: "20"
